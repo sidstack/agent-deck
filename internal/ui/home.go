@@ -16078,6 +16078,9 @@ func createSessionTool(command string) (string, string) {
 		command = session.GetToolCommand("cursor")
 	case "hermes":
 		tool = "hermes"
+	case "kiro":
+		tool = "kiro"
+		command = session.GetToolCommand("kiro")
 	default:
 		if toolDef := session.GetToolDef(command); toolDef != nil {
 			tool = command
