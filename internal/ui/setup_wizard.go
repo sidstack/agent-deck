@@ -54,7 +54,7 @@ func NewSetupWizard() *SetupWizard {
 		visible:             false,
 		complete:            false,
 		currentStep:         0,
-		toolOptions:         []string{"claude", "gemini", "opencode", "opencode2", "codex", "pi", "shell", "copilot", "crush", "muse", "cursor", "hermes", "deepseek", "omp"},
+		toolOptions:         []string{"claude", "gemini", "opencode", "opencode2", "codex", "pi", "shell", "copilot", "crush", "muse", "cursor", "hermes", "deepseek", "kiro", "omp"},
 		selectedTool:        0, // Default to Claude
 		dangerousMode:       false,
 		useDefaultConfigDir: true,
@@ -402,6 +402,7 @@ func (w *SetupWizard) View() string {
 			"codex":     "Codex CLI - OpenAI's coding assistant",
 			"pi":        "Pi CLI - lightweight coding assistant",
 			"omp":       "Oh My Pi - batteries-included coding agent (omp)",
+			"kiro":      "Kiro CLI - native V2 terminal interface",
 			"crush":     "Crush - Charm's terminal-first AI coding assistant",
 			"muse":      "Muse Code - Meta's terminal AI coding assistant",
 			"shell":     "Shell - No AI tool (plain terminal)",

@@ -1,10 +1,34 @@
 package ui
 
 import (
+	"strings"
 	"testing"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
+
+func TestSetupWizard_KiroSelection(t *testing.T) {
+	wizard := NewSetupWizard()
+	wizard.SetSize(80, 24)
+	wizard.Show()
+	wizard.Update(tea.KeyMsg{Type: tea.KeyEnter})
+	for n := 0; wizard.toolOptions[wizard.selectedTool] != "kiro"; n++ {
+		if n >= len(wizard.toolOptions) {
+			t.Fatal("Kiro is missing from first-run tool selection")
+		}
+		wizard.Update(tea.KeyMsg{Type: tea.KeyDown})
+	}
+	if !strings.Contains(stripAnsi(wizard.View()), "kiro") {
+		t.Fatal("selected Kiro is not visible in an 80x24 terminal")
+	}
+	wizard.Update(tea.KeyMsg{Type: tea.KeyEnter})
+	if wizard.currentStep != stepReady {
+		t.Fatal("Kiro should advance directly to Ready")
+	}
+	if config := wizard.GetConfig(); config.DefaultTool != "kiro" {
+		t.Fatalf("default tool = %q, want kiro", config.DefaultTool)
+	}
+}
 
 func TestSetupWizard_InitialState(t *testing.T) {
 	wizard := NewSetupWizard()
@@ -140,7 +164,7 @@ func TestSetupWizard_ToolOptions(t *testing.T) {
 	wizard := NewSetupWizard()
 
 	// Verify tool options
-	expectedTools := []string{"claude", "gemini", "opencode", "opencode2", "codex", "pi", "shell", "copilot", "crush", "muse", "cursor", "hermes", "deepseek", "omp"}
+	expectedTools := []string{"claude", "gemini", "opencode", "opencode2", "codex", "pi", "shell", "copilot", "crush", "muse", "cursor", "hermes", "deepseek", "kiro", "omp"}
 	if len(wizard.toolOptions) != len(expectedTools) {
 		t.Errorf("Tool options count: got %d, want %d", len(wizard.toolOptions), len(expectedTools))
 	}

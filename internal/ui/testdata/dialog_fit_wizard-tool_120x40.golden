@@ -1,4 +1,3 @@
-                                                                                                                        
                              ╭────────────────────────────────────────────────────────────╮                             
                              │                                                            │                             
                              │                                                            │                             
@@ -29,6 +28,7 @@
                              │    cursor agent)                                           │                             
                              │       ☤ hermes                                             │                             
                              │       🐋 deepseek                                          │                             
+                             │       🪁 kiro   Kiro CLI - native V2 terminal interface    │                             
                              │       ⌥ omp   Oh My Pi - batteries-included coding         │                             
                              │    agent (omp)                                             │                             
                              │                                                            │                             

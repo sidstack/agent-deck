@@ -9,6 +9,8 @@ agent-deck
 ```
 
 Select **kiro** in the new-session tool picker, or create a session with the CLI.
+Kiro is also available in first-run setup, Settings' default-tool selection,
+and the tool-visibility checklist. Use Up/Down to reach entries below the fold.
 Attach and detach through Agent Deck normally. Closing the dashboard leaves the
 live Kiro process in its tmux session.
 
