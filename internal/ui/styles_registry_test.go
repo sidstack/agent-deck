@@ -22,6 +22,7 @@ func TestToolIconColor_RegistryMatchesLegacySwitch(t *testing.T) {
 		icon  string
 		color lipgloss.Color
 	}{
+		"kiro":     {"🪁", ColorPurple},
 		"claude":   {"🤖", ColorOrange},
 		"gemini":   {"✨", ColorPurple},
 		"opencode": {"🌐", ColorTextDim},

@@ -70,6 +70,9 @@ type builtinTool struct {
 //   - "shell" is the catch-all fallback, never matched by a pattern.
 func builtinTools() []builtinTool {
 	return []builtinTool{
+		// Check the executable before legacy substring matches: a Kiro agent
+		// profile named "claude-reviewer" must still launch as Kiro.
+		{Name: "kiro", Icon: "🪁", Color: "purple", detectTokens: []string{"kiro", "kiro-cli"}, executableOnly: true},
 		{Name: "claude", Icon: "🤖", Color: "orange", detectSubstrings: []string{"claude"}},
 		{Name: "opencode", Icon: "🌐", detectSubstrings: []string{"opencode", "open-code"}},
 		{Name: "gemini", Icon: "✨", Color: "purple", detectSubstrings: []string{"gemini"}},

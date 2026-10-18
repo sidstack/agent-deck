@@ -827,6 +827,8 @@ func detectToolFromCommand(command string) string {
 			return "crush"
 		case "muse":
 			return "muse"
+		case "kiro-cli":
+			return "kiro"
 		case "cursor":
 			return "cursor"
 		case "agent":

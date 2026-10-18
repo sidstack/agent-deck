@@ -4658,6 +4658,9 @@ func GetCustomToolNames() []string {
 // GetToolCommand returns the configured command override for a builtin tool,
 // falling back to the bare tool name if no override is set.
 func GetToolCommand(toolName string) string {
+	if toolName == "kiro" {
+		return defaultKiroCommand
+	}
 	config, _ := LoadUserConfig()
 	if config == nil {
 		if toolName == "cursor" {
@@ -4748,6 +4751,8 @@ func GetToolIcon(toolName string) string {
 		return "π"
 	case "omp":
 		return "⌥"
+	case "kiro":
+		return "🪁"
 	case "shell":
 		return "🐚"
 	default:

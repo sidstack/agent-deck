@@ -5757,6 +5757,8 @@ func (i *Instance) Start() (startErr error) {
 		// no positional is a usage error dsh rejects before anything could be
 		// delivered (PR #1942 review, P1b/P1c).
 		command = validatedDeepSeekCommand
+	case i.Tool == "kiro":
+		command = i.buildKiroCommand(i.Command)
 	default:
 		// Check if this is a custom tool with session resume config
 		if toolDef := GetToolDef(i.Tool); toolDef != nil {
@@ -6151,6 +6153,8 @@ func (i *Instance) StartWithMessage(message string) (startErr error) {
 			break
 		}
 		command, promptEmbeddedInCommand = i.buildDeepSeekCommandWithPrompt(i.Command, message)
+	case i.Tool == "kiro":
+		command = i.buildKiroCommand(i.Command)
 	default:
 		// Check if this is a custom tool with session resume config
 		if toolDef := GetToolDef(i.Tool); toolDef != nil {
@@ -11037,6 +11041,8 @@ func (i *Instance) restart(env map[string]string) (err error) {
 			command = i.buildCrushCommand(i.Command)
 		case i.Tool == "cursor":
 			command = i.buildCursorCommand(i.Command, true)
+		case i.Tool == "kiro":
+			command = i.buildKiroCommand(i.Command)
 		default:
 			// Check if this is a custom tool with session resume config
 			if toolDef := GetToolDef(i.Tool); toolDef != nil {
@@ -13533,6 +13539,7 @@ func (i *Instance) wrapForSandbox(command string) (string, string, error) {
 // pane's initial process and whose clean exit (e.g. `/exit`) can fall back to
 // an interactive shell when exit_to_shell is enabled (issue #1161).
 var builtinAgentTools = map[string]bool{
+	"kiro":     true,
 	"claude":   true,
 	"gemini":   true,
 	"opencode": true,

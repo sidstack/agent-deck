@@ -823,6 +823,7 @@ Agent Deck works with any terminal-based AI tool:
 | **pi** (`pi-coding-agent`) | Status detection (hook-driven), organization, launch, resume, fork |
 | **DeepSeek Harness** (`dsh`) | Status detection, organization, launch, restart, per-account `DSH_HOME` |
 | **Oh My Pi** (`omp`) | Status detection, organization, launch, restart, resume, fork, project skills |
+| **Kiro CLI** | Native V2/TUI launch, persistent terminals, session organization ([scope](docs/KIRO.md)) |
 | **Custom tools** | Configurable via `[tools.*]` in config.toml |
 
 Select `opencode2` in the new/edit session picker, web picker, or default-tool settings,
